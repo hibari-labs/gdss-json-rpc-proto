@@ -40,7 +40,7 @@
 start(_Type, StartArgs) ->
     _ = application:start(inets),
     case gdss_json_rpc_proto_sup:start_link(StartArgs) of
-        {ok, Pid} = Ok -> Ok;
+        {ok, _Pid} = Ok -> Ok;
         Error -> Error
     end.
 
