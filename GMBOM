@@ -9,5 +9,6 @@
 #DEP  src/erl-tools/ubf                      *
 #DEP  src/erl-third-party/mochiweb           *
 #DEP  src/erl-tools/ubf-jsonrpc              *
+#DEP  src/erl-tools/ubf-thrift               *
 
 #DEP  src/erl-apps/gdss-ubf-proto            *
