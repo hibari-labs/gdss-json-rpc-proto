@@ -1,5 +1,7 @@
+%%% -*- mode: erlang -*-
+
 %%%----------------------------------------------------------------------
-%%% Copyright (c) 2008-2010 Gemini Mobile Technologies, Inc.  All rights reserved.
+%%% Copyright (c) 2009-2010 Gemini Mobile Technologies, Inc.  All rights reserved.
 %%%
 %%% Licensed under the Apache License, Version 2.0 (the "License");
 %%% you may not use this file except in compliance with the License.
@@ -13,24 +15,20 @@
 %%% See the License for the specific language governing permissions and
 %%% limitations under the License.
 %%%
-%%% File    : gdss_json_rpc_proto.R13B04.rel
-%%% Purpose : gdss json proto application release file
+%%% File    : gdss_json_rpc_proto.app
+%%% Purpose : gdss json rpc proto application
 %%%----------------------------------------------------------------------
 
-{release,
- {"gdss-json-rpc-proto", "0.01"},
- {erts, "5.8.1"},
+{application, gdss_json_rpc_proto,
  [
-  {kernel, "2.14.1"},
-  {stdlib, "1.17.1"},
-  {sasl, "2.1.9.2"},
-  {inets, "5.5"},
-  {crypto, "2.0.1"},
-
-  {gmt, "0.01"},
-  {gdss, "0.01"},
-  {gdss_client, "0.01"},
-  {gdss_ubf_proto, "0.01"},
-  {gdss_json_rpc_proto, "0.01"}
+  {description, "Gemini Distributed Storage Service JSON-RPC Protocol Server"},
+  {vsn, "0.01"},
+  {registered, []},
+  {applications, [kernel, stdlib, sasl, gdss, inets]},
+  {mod, {gdss_json_rpc_proto, []}},
+  {modules, [gdss_json_rpc_proto
+             , gdss_json_rpc_proto_server
+             , gdss_json_rpc_proto_sup
+            ]}
  ]
 }.
