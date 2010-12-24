@@ -54,11 +54,11 @@ init(_Args) ->
     %% Child_spec = [Name, {M, F, A},
     %%               Restart, Shutdown_time, Type, Modules_used]
 
-    CJRPC = case gmt_config_svr:get_config_value_i(gdss_json_rpc_tcp_port, ?GDSS_JSON_RPC_DEFAULT_TCP_PORT) of
-               {ok, 0} ->
-                   [];
-               {ok, JRPCPort} ->
-                    {ok, JRPCUri} = gmt_config_svr:get_config_value(gdss_json_rpc_uri, ?GDSS_JSON_RPC_DEFAULT_URI),
+    CJRPC = case application:get_env(gdss_json_rpc_proto, gdss_json_rpc_tcp_port) of
+                {ok, 0} ->
+                    [];
+                {ok, JRPCPort} ->
+                    {ok, JRPCUri} = application:get_env(gdss_json_rpc_proto, gdss_json_rpc_uri),
                     JRPCServer =
                         {json_rpc_server, {gdss_json_rpc_proto_server,start_link,
                                            [JRPCPort, JRPCUri]},

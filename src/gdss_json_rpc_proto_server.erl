@@ -19,6 +19,8 @@
 
 -module(gdss_json_rpc_proto_server).
 
+-include("gmt_elog.hrl").
+
 -behaviour(gen_server).
 
 %% Sample client call:
@@ -163,7 +165,7 @@ try
     Mod = ubf_jsonrpc_inets_httpd_simple:new(ubf_gdss_plugin, Uri, false),
     (Mod):do(Info)
 catch X:Y ->
-    error_logger:warning_msg("do: ~p ~p @ ~p\n", [X, Y, erlang:get_stacktrace()])
+    ?ELOG_WARNING("do: ~p ~p @ ~p\n", [X, Y, erlang:get_stacktrace()])
 end.
 
 %%%===================================================================

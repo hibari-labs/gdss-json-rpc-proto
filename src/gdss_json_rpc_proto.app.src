@@ -29,6 +29,8 @@
   {modules, [gdss_json_rpc_proto
              , gdss_json_rpc_proto_server
              , gdss_json_rpc_proto_sup
-            ]}
- ]
-}.
+            ]},
+  {env, [{gdss_json_rpc_tcp_port, 7598}
+         , {gdss_json_rpc_uri, "/gdss"}
+        ]}
+ ]}.
