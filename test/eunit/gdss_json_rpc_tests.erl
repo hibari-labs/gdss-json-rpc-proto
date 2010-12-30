@@ -13,11 +13,11 @@
 %%% See the License for the specific language governing permissions and
 %%% limitations under the License.
 %%%
-%%% File    : gdss_json_rpc.test.erl
+%%% File    : gdss_json_rpc_tests.erl
 %%% Purpose :
 %%%----------------------------------------------------------------------
 
--module(gdss_json_rpc_test).
+-module(gdss_json_rpc_tests).
 
 -compile(export_all).
 -include_lib("eunit/include/eunit.hrl").
