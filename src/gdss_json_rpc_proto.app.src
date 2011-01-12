@@ -33,4 +33,10 @@
   {env, [{gdss_json_rpc_tcp_port, 7598}
          , {gdss_json_rpc_uri, "/gdss"}
         ]}
+  %%
+  %% gdss_json_rpc_tcp_port
+  %%   TCP port for the Hibari JSON-RPC protocol server.
+  %%
+  %% gdss_json_rpc_uri
+  %%   URI for the Hibari JSON-RPC protocol server.
  ]}.
