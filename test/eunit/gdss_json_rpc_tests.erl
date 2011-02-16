@@ -50,9 +50,11 @@ test_setup() ->
     ubf_gdss_eunit_utils:simple_internal_setup(),
     ubf_gdss_eunit_utils:simple_hard_reset(),
     application:start(gdss_ubf_proto),
+    application:start(gdss_json_rpc_proto),
     ok.
 
 test_teardown(_) ->
+    application:stop(gdss_json_rpc_proto),
     application:stop(gdss_ubf_proto),
     ubf_gdss_eunit_utils:simple_internal_teardown(),
     ok.
