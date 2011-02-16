@@ -26,11 +26,6 @@
 
 -define(MY_ID, <<"foo_id_thingie">>).
 
-do_eunit() ->
-    case eunit:test(?MODULE) of
-        ok -> ok;
-        _ -> erlang:halt(1)
-    end.
 
 all_tests_test_() ->
     {setup,
@@ -51,29 +46,15 @@ all_tests_test_() ->
      end
     }.
 
--define(APPS, [gdss_json_rpc_proto, gdss_ubf_proto, gdss_admin, gdss_client, gdss_brick, gmt_util, inets, crypto, sasl]).
-
 test_setup() ->
-    %% @TODO - boilerplate start
-    os:cmd("rm -rf Schema.local hlog.* root"),
-    os:cmd("ln -s ../../gdss_admin/priv/root ."),
-    os:cmd("epmd -kill; sleep 1"),
-    os:cmd("epmd -daemon; sleep 1"),
-    {ok, _} = net_kernel:start(['eunit@localhost', shortnames]),
-    [ application:stop(A) || A <- ?APPS ],
-    [ ok=application:start(A) || A <- lists:reverse(?APPS) ],
-    random:seed(erlang:now()),
-    ok = application:set_env(gdss_brick, brick_max_log_size_mb, 1),
-    %% @TODO - boilerplate stop
-    api_gdss_ubf_proto_init:simple_internal_setup(),
-    api_gdss_ubf_proto_init:simple_hard_reset().
+    ubf_gdss_eunit_utils:simple_internal_setup(),
+    ubf_gdss_eunit_utils:simple_hard_reset(),
+    application:start(gdss_ubf_proto),
+    ok.
 
 test_teardown(_) ->
-    api_gdss_ubf_proto_init:simple_internal_teardown(),
-    %% @TODO - boilerplate start
-    [ application:stop(A) || A <- ?APPS ],
-    ok = net_kernel:stop(),
-    %% @TODO - boilerplate stop
+    application:stop(gdss_ubf_proto),
+    ubf_gdss_eunit_utils:simple_internal_teardown(),
     ok.
 
 do_description() ->
