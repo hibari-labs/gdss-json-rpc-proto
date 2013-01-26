@@ -22,7 +22,7 @@
 {application, gdss_json_rpc_proto,
  [
   {description, "Gemini Distributed Storage Service JSON-RPC Protocol Server"},
-  {vsn, "0.1.1"},
+  {vsn, "0.1.1.1"},
   {registered, []},
   {applications, [kernel, stdlib, sasl, gdss_client, inets]},
   {mod, {gdss_json_rpc_proto, []}},
